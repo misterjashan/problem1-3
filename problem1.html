@@ -1,0 +1,39 @@
+<html>
+    <head>
+        <title>Problem 1</title>
+    <body>
+    <h1>Converting seconds into hours minutes and seconds</h1>
+    <p> 
+        Time in hh:mm:ss is: 
+        <span class="output"></span> 
+    </p> 
+    <p>I will do solve this using the Date() constructor which expects a UNIX timestamp</p>
+    <input type="number" id="myNumber" placeholder="Enter the seconds">
+  
+    <button onclick="convertSecondstoTime()"> 
+        Get time in hh:mm:ss 
+    </button> 
+    <script type="text/javascript"> 
+        function convertSecondstoTime() 
+        { 
+            given_seconds = document.getElementById("myNumber").value
+  
+            dateObj = new Date(given_seconds * 1000); //time in seconds is converted to a time in milliseconds by multiplying it by 1000
+            hours = dateObj.getUTCHours(); //hours value is extracted from the date using the getUTCHours() method
+            minutes = dateObj.getUTCMinutes(); //minutes value in UTC is extracted from the date using the getUTCMinutes() method
+            seconds = dateObj.getSeconds(); // seconds value is extracted from the date using the getSeconds() method
+  
+            timeString = hours.toString().padStart(2, '0')    // final formatted date is created by converting thest values into strings
+                + ':' + minutes.toString().padStart(2, '0')    //and then padding them with an extra ‘0’, 
+                + ':' + seconds.toString().padStart(2, '0'); //if the value is a single-digit by using the padStart() method. 
+            document.querySelector('.output').textContent = timeString;  //The individual parts are then joined together with a colon(:) as the separator.
+  
+        } 
+    </script> 
+
+    
+    
+
+    </body>
+    </head>
+</html>
